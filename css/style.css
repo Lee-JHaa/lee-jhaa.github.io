@@ -1,0 +1,354 @@
+@charset "UTF-8";
+
+/*레이아웃스타일*/
+/*반복페이지나 원페이지에서(포트폴리오 이력서)많이 사용되는 방법*/
+html,body,#wrap,section{
+	width:100%;
+	height:100%;
+	transition:0.5s; 
+}
+
+/*섹션별 배경색 지정*/
+#home{background:white;}
+
+#about{background:#231F72;}
+#skills{background:#231F72;}
+#work{
+	background:#AFB8FA ;
+	height:200%;} /*작업물이 많아서 두페이지로할려면, height값주면 됨 %아니면 px로 해도됨*/
+#contact{background:#AFB8FA;}
+
+/*header style*/
+header{
+	background:rgba(255,255,255,0.3);
+	border-bottom:1px solid white;
+	position:fixed;
+	width:100%;
+	height:65px;
+	font-size:1.2em;
+	z-index:999; 
+	/*현재는 안해도되긴하지만 section꾸몄을때 헤더가 안보일수있음 그래서 아주 큰 값을 적어주는 것*/
+}
+
+
+/*topBtn style*/
+#topBtn{
+	width:50px;
+	height:50px;
+	background:white;
+	position:fixed;
+	bottom:10px;
+	right:10px;
+	border-radius:50%;
+	text-align:center;
+	line-height:50px;
+	box-shadow:0 0 2px 3px rgba(255,255,255,0.3);
+}
+
+/*layout style end------------*/
+
+
+/*헤더 상세스타일*/
+header a{color:#231F72;}
+
+.logo{
+	position:absolute;
+	left:10%;
+	top:50%; /*정중앙에 배열*/
+	transform:translateY(-50%); /*정중앙에 배열*/
+}
+
+.logo img{
+	width:50px;
+}
+nav{
+	position:absolute;
+	right:10%;
+	top:50%;
+	transform:translateY(-50%);
+}
+nav ul{} /*overflow:auto 해줘도 되고 안해줘도됨-이쁘게 꾸미는게 아니니까*/
+nav ul li{
+	float:left;
+	padding-left:30px; /*padding 또는 margin으로 띄워도됨*/
+}
+nav ul li a{
+	padding:5px; /*줄과 글씨와 여백을 좀더 주기위해*/
+}
+nav a:hover, nav a.on{/*a 다음 붙이면 자기자신, 띄우면 후손*/
+	border-bottom:2px solid #F57644;
+	color:#F57644 !important;
+	/*css에서 우선순위를 가장높게 설정하겠다. 인라인-내부-외부/선택자: 아이디-클래스-태그*/
+} 
+
+/*.mAllMenu style*/
+.mAllMenu{
+	width:30px;
+	height:30px;
+	position:absolute;
+	right:10%;
+	top:50%;
+	transform:translateY(-50%);
+	overflow:hidden;
+	z-index:10; /*클릭했을때 메뉴가 나오게 할려면, 형제들 사이에서 위에 올라가야함*/
+	display:none;
+}
+
+/*모바일 삼선메뉴 상세스타일*/
+.mAllMenu ul{
+	position:relative;
+	width:100%;
+	height:100%;
+}
+
+.mAllMenu ul li{
+	width:100%;
+	height:4px;
+	background:white;
+	position:absolute;
+	transition:0.5s;
+}
+.mAllMenu ul li:nth-child(1){top:0;}
+.mAllMenu ul li:nth-child(2){top:50%;transform:translateY(-50%);}
+.mAllMenu ul li:nth-child(3){top:26px;} /*bottom으로 해도되긴함*/
+
+/*삼선 메뉴 클릭시 x버튼으로 전환*/
+/*삭제했다가 생겼다가 기능 할려면, html mAllMenu ul에 클래스 임시로 붙이기*/
+.mAllMenu ul.mX{}
+.mAllMenu ul.mX li{
+	width:5px;
+	height:100%;
+	top:0;
+}
+
+.mAllMenu ul.mX li:nth-child(1){
+	left:0;
+	transform:skewX(40deg); /*기울기 돌아가는 기능*/
+	transform-origin:left top; /*물리는 기능*/
+	
+	}
+.mAllMenu ul.mX li:nth-child(2){
+	background:transparent; /*가운데 선은 안보이게, x모양이니까.*/
+}
+.mAllMenu ul.mX li:nth-child(3){
+	left:25px;
+	transform:skewX(-40deg); /*반대방향으로 */ 
+	transform-origin:right top;
+}/* 다 만져주고, html ul태그 클래스 mX 만들었던거 삭제해서 안보이게*/
+
+
+/*섹션 상세스타일(공통스타일)*/
+section h2{
+	padding-top:90px;
+	text-align:center;
+	font-size:3.5em;
+	color:white;
+	font-familly:
+}
+
+section h2 span{
+	color:#734FFA;;
+	border-top:5px solid rgba(35,30,0,0.7);
+	font-size:1.5em;
+}
+
+section .content{
+	width:80%;
+	height:70%;
+	/*border:1px solid #734ffa;*/
+	margin:0 auto;
+	position:relative; /*테두리 안 박스 두개를 움직이고 싶기 때문에 자녀를 앱솔루트로 할거니까*/
+	overflow:hidden;
+}
+
+/*home style*/
+#home .content{
+	margin-top:50px;
+	/*position:absolute;
+	left:10%;
+	bottom:30%;*/}
+	
+
+#homeHeader{
+	width:655px;
+	position:absolute;
+	bottom:100px;
+}
+
+#homeHeaderLine{
+	width:650px;
+	position:absolute;
+	bottom:220px;
+	
+}
+#home .underLine{
+	position:absolute;
+	bottom:40%;
+	width:810px;
+	border-bottom:2px solid #8897C9;
+}
+	.content p:last-child{
+		color:#283982;
+		position:absolute;
+		right:1%;
+		bottom:50px;
+		font-size:1.8em;
+		font-weight:bold;
+		border-bottom:2px solid #8897C9;
+}
+	
+
+#home>img{
+	width:100%;
+	height:50%;
+	position:absolute;
+	top:-1%;
+}
+
+.line img{
+	width:400px;
+	height:20%;
+	position:relative;
+}
+.line img:nth-child(1){	/*왼쪽 라인*/
+	position:absolute;
+	top:23%;
+	left:10%;
+	z-index:10;
+	}
+
+.line img:nth-child(2){	/*오른쪽 라인*/
+	position:absolute;
+	top:50%;
+	right:10%;
+	}
+
+/*Icon style*/
+.Icon li:nth-child(1) img{ /*작은 로고아이콘*/
+	width:9%;
+	position:absolute;
+	bottom:5%;
+    left:3%;
+	transform:rotate(250deg);
+}
+.Icon li:nth-child(2) img{	/*큰 로고아이콘*/
+	width:15%;
+	position:absolute;
+	top:20%;
+    right:10%;
+    z-index:11;
+}
+
+.Icon li:nth-child(3) img{	/*작은 텍스트 원*/
+	width:10%;
+	position:absolute;
+	left:1%;
+}
+.Icon li:nth-child(4) img{	/*큰 텍스트 원*/
+	width:13%;
+	position:absolute;
+	right:4%;
+	top:15%;
+	z-index:10;
+}
+.Icon li:nth-child(5) img{	/*별1*/
+	width:80px;
+	position:absolute;
+	right:40%;
+	top:30%;
+	z-index:10;
+}
+.Icon li:nth-child(6) img{	/*별1_2*/
+	width:80px;
+	position:absolute;
+	left:4%;
+	top:40%;
+	z-index:10;
+	transform:rotate(45deg);
+}
+.Icon li:nth-child(7) img{	/*별2*/
+	width:80px;
+	position:absolute;
+	right:30.1%;
+	bottom:20%;
+	z-index:10;
+	transform:rotate(45deg);
+}
+.Icon li:nth-child(8) img{	/*반짝이1*/
+	width:50px;
+	position:absolute;
+	left:3%;
+	bottom:277px;
+	z-index:10;	
+}
+.Icon li:nth-child(9) img{	/*반짝이2*/
+	width:50px;
+	position:absolute;
+	right:45%;
+	bottom:170px;
+	z-index:10;	
+}
+
+
+.content>div{
+	width:45%;
+	height:100%;
+	background:rgba(255,255,255,0.5);
+	position:absolute;
+	transition:0.5s;
+}
+
+/*about style*/
+#about .left{left:0;}/*width값 써도 되지만 위에 공통으로 썼으니 안써도됨*/
+#about .right{right:0;}
+
+#skills .left{left:0; transform:scale(1);}
+#skills .right{right:0; transform:scale(1);}
+
+#work .left{left:0; height:100%;}
+#work .right{right:0; height:100%;}
+
+#contact .left{left:0;}
+#contact .right{right:0;}
+ 
+
+/*문자열 세로 가운데 정렬*/
+/*애니메이션 할려면 포지션으로 가운데 설정하고, 아니면 이 방법으로 해도될듯*/
+#work .left ul{
+	display:table; /*세로 가운에 만들려면 테이블화해서 해야함, 구성은 테이블과 셀이 존재해야함*/
+	width:100%;
+	height:100%;
+}
+#work .left ul li{
+	display:table-cell;/*세로 가운에 만들려면 테이블화해서 해야함, 구성은 테이블과 셀이 존재해야함*/
+	text-align:center;
+	vertical-align:middle; /*세로 가운데*/
+	font-size:3em;
+	}
+
+
+@media screen and (max-width:1200px){
+	
+	body{font-size:11px;}
+	.content{width:95%;}
+	
+	.mAllMenu{display:block;}
+	
+	/*삼선메뉴 클릭시 보이는 주메뉴들*/
+	nav{
+		position:fixed; /*메뉴를 오른쪽에 고정으로 */
+		width:50%; /*px 값으로 해도 상관 없음*/
+		height:100%; /*fixed니까 스크린 기준으로 먹힘(absolute는 부모영역기준으로*/
+		right:-50%; 
+		/*처음에 안보이게 설정하기 위해 -값 주기, 위드값이 50%니 -50%, 200px면 -200px로*/
+		top:0;
+		transform:translateY(0%); /*반응형이기 때문에 안쓴다고 지우면 안되고 변경되는 내용은 반드시 설정*/
+		background:rgba(0,0,0,0.7);
+	}
+	nav ul{margin-top:100px;} /*overflow:auto 해줘도 되고 안해줘도됨-이쁘게 꾸미는게 아니니까*/
+	nav ul li{
+		clear:left; /*float:left 지우는 것*/
+		line-height:3; /*padding으로 해도되고, margin-bottom으로 해도됨-> a 태그에서 해도됨*/
+	}
+
+}
